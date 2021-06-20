@@ -28,21 +28,22 @@ API com relatórios:
 API para autenticação:
 * POST http://localhost:8000/api-token-auth/ (Post com o username e password a API retorna um token para acessar os demais endpoint)
 
-O projeto em questão vai ser executado com o banco de dados sqlite3 ja com alguns dados cadastrados e o usuário ssysAdmin (senha: senhassys) para testes. 
+O projeto em questão é executado com um banco de dados sqlite3 ja com alguns dados cadastrados e o usuário ssysAdmin (senha: senhassys) para testes. 
 
-Para acessar os endpoints é necessario autenticação via token, assim iniciamente para obter o token deve-se encaminhar uma requisição com o metodo http POST na url http://localhost:8000/api-token-auth/ com username e password no body. Exemplo:
+Para acessar os endpoints é necessário autenticação via token, assim inicialmente para obter o token deve-se encaminhar uma requisição com o método http POST na url http://localhost:8000/api-token-auth/ com username e password no body. Exemplo:
 * {
         "username": "ssysAdmin",
         "password": "senhassys"
 } 
 
-OBS:. O banco de dados ja tem um usuário que pode ser utilizado para teste caso desejado, as as credenciais 
+OBS:. O banco de dados já tem um usuário que pode ser utilizado para teste, caso desejado. As credenciais são
         username: ssysAdmin e
         password: senhassys.
         
-Com o token retornado na operação anterio pode-se acessar os demais endpoints encaminhando o token no header da requisição. Exemplo:
+Com o token obtido na operação anterio pode-se acessar os demais endpoints encaminhando o token no header da requisição. Exemplo:
+```
 curl -X GET http://localhost:8000/employees/ -H 'Authorization: Token c05d9b6486e8d952c9dbc9cbe1dc488eab2091fe'
-
+```
 A mesma aplicação pode ser acessada em https://infinite-basin-92701.herokuapp.com/ com os mesmo endpoint citados anteriomente. A autenticação do usuario permanece igual e o mesmo usuario e senha de teste se encontra no banco de dados. Assim para realizar os mesmo teste é so trocar http://localhost:8000/employees/ por https://infinite-basin-92701.herokuapp.com/employees/. O mesmo vale para os demais endpoint.
 
 
