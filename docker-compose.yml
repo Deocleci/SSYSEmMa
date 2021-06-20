@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  website:
+    build: .
+    image: syss:0.1
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+
+    volumes:
+      - .:/syss
+    ports:
+      - "8000:8000"
+#    depends_on:
+#      - db
+
+#  db:
+#    image: postgres:12.0-alpine
+##    ports:
+##      - 5435:5432
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
+#    environment:
+#      - POSTGRES_USER=syss_user
+#      - POSTGRES_PASSWORD=sys1234
+#      - POSTGRES_DB=syss_db
+#
+#volumes:
+#  postgres_data:
